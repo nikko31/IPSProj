@@ -1,0 +1,13 @@
+#EseguiPer Giorno(M);
+# ;
+# ;
+# ESEGUE LA FORMULA SE CI SONO MENO DI 15GG DI ASSENZA RETRIBUITA CONSECUTIVA;
+# SOMMA I PERMESSI RETRIBUITI MATURATI(4,66H/MESE);
+# SOMMA LE FERIE MATURATE(15H/MESE);
+Fai K = 15;
+Fai K = 56, K = K / 12;
+Fai R001 = R001 + ValPa(K);
+Fai R003 = R003 + ValPa(K);
+Per AggOr(04, PT50) Fai K = 28, K = K / 12;
+Se AggOr(04) = 50 Fai K = 7.5;
+Se ValPa(GNR) >= 15 Fai Interrompi;

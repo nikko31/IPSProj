@@ -1,0 +1,3 @@
+#EseguiPer Giorno(P);
+# ESEGUE LA FORMULA SOLTANTO PER APPRENDISTI E DIPENDENTI;
+Per AggOr(01, APP) Se AggOr(01) <> APP E AggOr(01) <> DIP Fai T001 = 0, R001 = 0, T003 = 0, R003 = 0;

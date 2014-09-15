@@ -1,0 +1,7 @@
+# GESTIONE DEI CODICI DA ESPORRE IN STAMPA/WEB
+Fai  ORDM = 0, NEGG = 0, APOS = 0;
+Fai  ORDM = Teoriche;
+Fai  ORDM = ORDM - DurG2 (ORD);
+Fai  ORDM = ORDM - ValPa (CAUS);
+Se  ValPa (ORDM) < 0  Fai  ORDM = 0;
+Fai Scrivi(la):

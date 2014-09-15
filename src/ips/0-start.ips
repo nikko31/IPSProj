@@ -1,0 +1,16 @@
+
+Fai Teoriche = 8,
+DIP=1,
+ORD=2,
+APP=4,
+_GIU=5,
+GIU=6,
+_SAL=7,
+SAL=8,
+_EFF=9,
+EFF=1,
+_TEO=1,
+TEO=1,
+01=3,
+R001=4,
+CAUS=3;
