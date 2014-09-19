@@ -1,6 +1,6 @@
-// Generated from C:/Users/nikko31/Desktop/IPSProj/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
+// Generated from C:/Users/nikko31/Desktop/IPSProj1/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
 
-package com.intertechitalia.ips2.core;
+    package com.intertechitalia.ips2.core;
 
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
@@ -144,6 +144,13 @@ public interface IPSVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrintlnFunctionCall(@NotNull IPSParser.PrintlnFunctionCallContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code meseNumNExpr}
+	 * labeled alternative in {@link IPSParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code durg2FunctionCall}
 	 * labeled alternative in {@link IPSParser#funcCall}.
 	 * @param ctx the parse tree
@@ -151,12 +158,12 @@ public interface IPSVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDurg2FunctionCall(@NotNull IPSParser.Durg2FunctionCallContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code meseNumNExpr}
-	 * labeled alternative in {@link IPSParser#expr}.
+	 * Visit a parse tree produced by the {@code codg1FunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx);
+	T visitCodg1FunctionCall(@NotNull IPSParser.Codg1FunctionCallContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ltExpr}
 	 * labeled alternative in {@link IPSParser#expr}.
@@ -260,6 +267,13 @@ public interface IPSVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNullExpr(@NotNull IPSParser.NullExprContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code scrivitutteValFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitScrivitutteValFunctionCall(@NotNull IPSParser.ScrivitutteValFunctionCallContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code boolExpr}
 	 * labeled alternative in {@link IPSParser#expr}.
 	 * @param ctx the parse tree
@@ -272,6 +286,13 @@ public interface IPSVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMegablock(@NotNull IPSParser.MegablockContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code scrivitutteFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitScrivitutteFunctionCall(@NotNull IPSParser.ScrivitutteFunctionCallContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code effettiveFunctionCall}
 	 * labeled alternative in {@link IPSParser#funcCall}.
@@ -373,6 +394,13 @@ public interface IPSVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInterrompiFunctionCall(@NotNull IPSParser.InterrompiFunctionCallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code teoricheFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTeoricheFunctionCall(@NotNull IPSParser.TeoricheFunctionCallContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code divideExpr}
 	 * labeled alternative in {@link IPSParser#expr}.

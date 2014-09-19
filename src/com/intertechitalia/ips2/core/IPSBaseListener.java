@@ -1,6 +1,6 @@
-// Generated from C:/Users/nikko31/Desktop/IPSProj/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
+// Generated from C:/Users/nikko31/Desktop/IPSProj1/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
 
-package com.intertechitalia.ips2.core;
+    package com.intertechitalia.ips2.core;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -247,6 +247,18 @@ public class IPSBaseListener implements IPSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDurg2FunctionCall(@NotNull IPSParser.Durg2FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -259,13 +271,13 @@ public class IPSBaseListener implements IPSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx) { }
+	@Override public void enterCodg1FunctionCall(@NotNull IPSParser.Codg1FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx) { }
+	@Override public void exitCodg1FunctionCall(@NotNull IPSParser.Codg1FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -451,6 +463,18 @@ public class IPSBaseListener implements IPSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterScrivitutteValFunctionCall(@NotNull IPSParser.ScrivitutteValFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitScrivitutteValFunctionCall(@NotNull IPSParser.ScrivitutteValFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBoolExpr(@NotNull IPSParser.BoolExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -470,6 +494,18 @@ public class IPSBaseListener implements IPSListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMegablock(@NotNull IPSParser.MegablockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterScrivitutteFunctionCall(@NotNull IPSParser.ScrivitutteFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitScrivitutteFunctionCall(@NotNull IPSParser.ScrivitutteFunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -650,6 +686,18 @@ public class IPSBaseListener implements IPSListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInterrompiFunctionCall(@NotNull IPSParser.InterrompiFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTeoricheFunctionCall(@NotNull IPSParser.TeoricheFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTeoricheFunctionCall(@NotNull IPSParser.TeoricheFunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

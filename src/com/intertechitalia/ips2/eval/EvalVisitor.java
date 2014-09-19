@@ -1,6 +1,16 @@
-package com.intertechitalia.ips2.core;
+package com.intertechitalia.ips2.eval;
 
+import com.intertechitalia.ips2.core.IPSBaseVisitor;
+import com.intertechitalia.ips2.core.IPSParser;
+import com.intertechitalia.ips2.core.IPSValue;
+import com.intertechitalia.ips2.core.Scope;
+import com.intertechitalia.ips2.test.Main;
+import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import javax.print.DocFlavor;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by nikko31 on 10/09/2014.
@@ -10,7 +20,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
     public double jump=0;
     public double jumpFine=0;
     public char giorno=0; //0->niente 1->numero 2->giorno
-    public boolean eseg=true;
+    public boolean esegui=true;
     public int mese=0;
 
     // '!' Expr #notExpr
@@ -21,20 +31,11 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
     // Expr '+' Expr #addExpr
 
-    @Override
-    public IPSValue visitEffettiveFunctionCall(@NotNull IPSParser.EffettiveFunctionCallContext ctx)
-    {
-        return new IPSValue(2);
-    }
-    @Override
-    public IPSValue visitModorFunctionCall(@NotNull IPSParser.ModorFunctionCallContext ctx)
-    {
-        return new IPSValue(2);
-    }
+
     @Override
     public IPSValue visitFunctionCall(@NotNull IPSParser.FunctionCallContext ctx)
     {
-        if(this.eseg)
+        if(this.esegui)
             return this.visit(ctx.funcCall());
         return new IPSValue(0);
     }
@@ -54,6 +55,27 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         if(mese==2) return new IPSValue("Feb");
         else
             return IPSValue.NULL;
+    }
+    @Override
+    public IPSValue visitEffettiveFunctionCall(@NotNull IPSParser.EffettiveFunctionCallContext ctx)
+    {
+
+        return new IPSValue(2);
+    }
+    @Override
+    public IPSValue visitModorFunctionCall(@NotNull IPSParser.ModorFunctionCallContext ctx)
+    {
+        return new IPSValue(2);
+    }
+    @Override
+    public IPSValue visitTeoricheFunctionCall(@NotNull IPSParser.TeoricheFunctionCallContext ctx)
+    {
+        return new IPSValue(2);
+    }
+    @Override
+    public IPSValue visitCodg1FunctionCall(@NotNull IPSParser.Codg1FunctionCallContext ctx)
+    {
+        return new IPSValue(2);
     }
     @Override
     public IPSValue visitModulusMinExpr(@NotNull IPSParser.ModulusMinExprContext ctx)
@@ -83,7 +105,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(!lhs.equals(rhs));
@@ -97,7 +119,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(lhs.equals(rhs));
@@ -111,7 +133,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(!lhs.equals(rhs));
@@ -125,7 +147,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Mese().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(lhs.equals(rhs));
@@ -139,7 +161,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(!lhs.equals(rhs));
@@ -153,7 +175,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(lhs.equals(rhs));
@@ -167,7 +189,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+ Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(!lhs.equals(rhs));
@@ -181,7 +203,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(rhs.equals(IPSValue.NULL))
         {
-            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga: "+ctx.getStart().getLine()+"\n");
+            System.err.print("Errore: "+ctx.Giorno().getText()+" nella riga:" +ctx.getStart().getLine()+"nel file: "+Main.fileN+"\n");
             System.exit(1);
         }
         return new IPSValue(lhs.equals(rhs));
@@ -192,7 +214,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue value=this.visit(ctx.exprList().expr(0));
         if(ctx.exprList().expr(1)==null) {
             if (value == IPSValue.NULL) {
-                System.err.print("variabile " + ctx.exprList().expr(0).getText() + " non definita nella riga: " + ctx.exprList().expr(0).getStart().getLine());
+                System.err.print("variabile " + ctx.exprList().expr(0).getText() + " non definita nella riga: " + ctx.exprList().expr(0).getStart().getLine()+" nel file: "+Main.fileN);
                 System.exit(1);
             }
             return value;
@@ -206,7 +228,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue value=this.visit(ctx.expr());
         if(value==IPSValue.NULL)
         {
-            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine());
+            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine()+" nel file: "+Main.fileN);
             System.exit(1);
         }
         return value;
@@ -217,7 +239,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue value=this.visit(ctx.expr());
         if(value==IPSValue.NULL)
         {
-            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine());
+            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine()+" nel file: "+Main.fileN);
             System.exit(1);
         }
         return value;
@@ -228,7 +250,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue value=this.visit(ctx.expr());
         if(value==null)
         {
-            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine());
+            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine()+" nel file: "+Main.fileN);
             System.exit(1);
         }
         return value;
@@ -239,7 +261,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue value=this.visit(ctx.expr());
         if(value==null)
         {
-            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine());
+            System.err.print("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine()+" nel file: "+Main.fileN);
             System.exit(1);
         }
         return value;
@@ -252,12 +274,12 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         boolean err=false;
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
@@ -288,12 +310,12 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         boolean err=false;
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
@@ -312,12 +334,12 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         boolean err=false;
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
@@ -336,12 +358,12 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         boolean err=false;
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
@@ -360,12 +382,12 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         boolean err=false;
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
@@ -382,13 +404,13 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue lhs = this.visit(ctx.expr(0));
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         IPSValue rhs = this.visit(ctx.expr(1));
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
@@ -403,17 +425,18 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue lhs = this.visit(ctx.expr(0));
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         IPSValue rhs = this.visit(ctx.expr(1));
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
             System.exit(1);
+
         return new IPSValue(lhs.equals(rhs));
     }
     // Expr '!=' Expr #notEqExpr
@@ -431,16 +454,18 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue lhs = this.visit(ctx.expr(0));
         IPSValue rhs = this.visit(ctx.expr(1));
         boolean err=false;
+
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
+
         if(err)
             System.exit(1);
         if(lhs.compareTo(rhs)>=0)
@@ -455,18 +480,20 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue lhs = this.visit(ctx.expr(0));
         IPSValue rhs = this.visit(ctx.expr(1));
         boolean err=false;
+
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
             System.exit(1);
+
         if(lhs.compareTo(rhs)<=0)
             return new IPSValue(true);
         else
@@ -481,16 +508,17 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         boolean err=false;
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
             System.exit(1);
+
         if(lhs.compareTo(rhs)>0)
             return new IPSValue(true);
         else
@@ -506,12 +534,12 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         boolean err=false;
         if(lhs==null)
         {
-            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(0).getText()+" non definita nella riga: "+ctx.expr(0).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(rhs==null)
         {
-            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+"\n");
+            System.err.print("variabile "+ctx.expr(1).getText()+" non definita nella riga: "+ctx.expr(1).getStart().getLine()+" nel file: "+Main.fileN+"\n");
             err=true;
         }
         if(err)
@@ -523,10 +551,6 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
     }
 
 
-    // Expr '?' Expr ':' Expr #ternaryExpr
-    // TODO
-    // Expr In Expr #inExpr
-    // TODO
     // Expr '&&' Expr #AndExpr
     @Override
     public IPSValue visitAndExpr(@NotNull IPSParser.AndExprContext ctx) {
@@ -545,6 +569,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
     @Override
     public IPSValue visitNumberExpr(@NotNull IPSParser.NumberExprContext ctx) {
         return new IPSValue(Double.valueOf(ctx.getText()));
+
     }
     // Bool #boolExpr
     @Override
@@ -586,7 +611,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue value = this.visit(ctx.expr());
         if(value==null)
         {
-            System.err.println("variabile " + ctx.expr().getText() + " non definita nella riga: " + ctx.expr().getStart().getLine());
+            System.err.println("variabile " + ctx.expr().getText() + " non definita nella riga: " + ctx.expr().getStart().getLine()+" nel file: "+Main.fileN);
             System.exit(1);
         }
 
@@ -601,7 +626,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue ris=this.visit(ctx.expr());
         if(ris==null)
         {
-            System.err.println("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine());
+            System.err.println("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine()+" nel file: "+Main.fileN);
             System.exit(1);
         }
         System.out.println(ris);
@@ -614,10 +639,33 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
         IPSValue ris=this.visit(ctx.expr());
         if(ris==null)
         {
-            System.err.println("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine());
+            System.err.println("variabile "+ctx.expr().getText()+" non definita nella riga: "+ctx.expr().getStart().getLine()+" nel file: "+Main.fileN);
             System.exit(1);
         }
         System.out.print(ris);
+        return IPSValue.VOID;
+    }
+    //ScriviTutte ( ) #scrivitutteFunctionCall
+    @Override
+    public IPSValue visitScrivitutteFunctionCall(@NotNull IPSParser.ScrivitutteFunctionCallContext ctx)
+    {
+        Map<String, IPSValue> variables=scope.getAll();
+        System.out.println(variables.entrySet().toString());
+        return IPSValue.VOID;
+    }
+    //ScriviTutte ( expr ) #scrivitutteValFunctionCall
+    @Override
+    public IPSValue visitScrivitutteValFunctionCall(@NotNull IPSParser.ScrivitutteValFunctionCallContext ctx)
+    {
+        Map<String, IPSValue> variables=scope.getAll();
+        for(Iterator<Map.Entry<String, IPSValue>> it = variables.entrySet().iterator(); it.hasNext(); ) {
+            Map.Entry<String, IPSValue> entry = it.next();
+            if(entry.getValue().asDouble()<=this.visit(ctx.expr()).asDouble()) {
+                it.remove();
+            }
+        }
+        System.out.println(variables.entrySet().toString());
+
         return IPSValue.VOID;
     }
     @Override
@@ -625,7 +673,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
     {
         for(IPSParser.BlockContext blockContext : ctx.block())
         {
-            if(this.eseg) {
+            if(this.esegui) {
                 if (this.jumpFine == 1)
                     return IPSValue.VOID;
                 if (this.jump > 0)
@@ -692,7 +740,7 @@ public class EvalVisitor extends IPSBaseVisitor<IPSValue> {
 
         if(this.visit(ctx.ifStat().expr()).asBoolean()) {
             IPSValue ris= this.visit(ctx.ifStat().block());
-            if(this.eseg)
+            if(this.esegui)
                 return ris;
         }
 // else if ...

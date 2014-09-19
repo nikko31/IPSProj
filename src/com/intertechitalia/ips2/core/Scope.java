@@ -1,5 +1,7 @@
 package com.intertechitalia.ips2.core;
 
+import com.intertechitalia.ips2.test.Main;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,5 +81,9 @@ public class Scope {
             // Unknown variable
             return null;
         }
+    }
+    public Map<String,IPSValue> getAll()
+    {
+        return this.variables;
     }
 }

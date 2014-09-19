@@ -1,6 +1,6 @@
-// Generated from C:/Users/nikko31/Desktop/IPSProj/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
+// Generated from C:/Users/nikko31/Desktop/IPSProj1/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
 
-package com.intertechitalia.ips2.core;
+    package com.intertechitalia.ips2.core;
 
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
@@ -153,6 +153,13 @@ public class IPSBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements IP
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitDurg2FunctionCall(@NotNull IPSParser.Durg2FunctionCallContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -160,7 +167,7 @@ public class IPSBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements IP
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCodg1FunctionCall(@NotNull IPSParser.Codg1FunctionCallContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -272,6 +279,13 @@ public class IPSBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements IP
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitScrivitutteValFunctionCall(@NotNull IPSParser.ScrivitutteValFunctionCallContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitBoolExpr(@NotNull IPSParser.BoolExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -280,6 +294,13 @@ public class IPSBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements IP
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitMegablock(@NotNull IPSParser.MegablockContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitScrivitutteFunctionCall(@NotNull IPSParser.ScrivitutteFunctionCallContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -385,6 +406,13 @@ public class IPSBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements IP
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitInterrompiFunctionCall(@NotNull IPSParser.InterrompiFunctionCallContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitTeoricheFunctionCall(@NotNull IPSParser.TeoricheFunctionCallContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

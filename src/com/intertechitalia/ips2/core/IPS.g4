@@ -1,6 +1,6 @@
 grammar IPS;
 @header {
-package com.intertechitalia.ips2.core;
+    package com.intertechitalia.ips2.core;
 }
 parse
 : megablock EOF
@@ -14,7 +14,7 @@ block
 ;
 
 ifStatement
-:  ifStat  elseStat?
+: ifStat  elseStat?
 ;
 
 ifStat
@@ -35,23 +35,27 @@ functionCall
 : funcCall
 ;
 funcCall
-: Println '(' expr? ')' #printlnFunctionCall
-| Print '(' expr ')'    #printFunctionCall
-| DurG1 '(' expr ')'    #durg1FunctionCall
-| DurG2 '(' expr ')'    #durg2FunctionCall
-| ValPa '(' expr ')'    #valpaFunctionCall
-| ScaG2 '(' expr ')'    #scag2FunctionCall
+: Println '(' expr? ')'     #printlnFunctionCall
+| Print '(' expr ')'        #printFunctionCall
+| ScriviTutte '(' ')'       #scrivitutteFunctionCall
+| ScriviTutte '(' expr ')'  #scrivitutteValFunctionCall
+| DurG1 '(' expr ')'        #durg1FunctionCall
+| DurG2 '(' expr ')'        #durg2FunctionCall
+| ValPa '(' expr ')'        #valpaFunctionCall
+| ScaG2 '(' expr ')'        #scag2FunctionCall
 | AggOr '(' exprList ')'    #aggorFunctionCall
-| Giorno                #giorno1FunctionCall
-| Mese                  #mese1FunctionCall
-| ModOr                 #modorFunctionCall
-| Effettive             #effettiveFunctionCall
+| Teoriche                  #teoricheFunctionCall
+| CodG1                     #codg1FunctionCall
+| Giorno                    #giorno1FunctionCall
+| Mese                      #mese1FunctionCall
+| ModOr                     #modorFunctionCall
+| Effettive                 #effettiveFunctionCall
 ;
 saltaCall
 :Salta '(' expr ')'
 ;
 interrompiCall
-: 'Interrompi'   #interrompiFunctionCall
+: 'Interrompi'              #interrompiFunctionCall
 ;
 exprList
 : expr (',' expr)*
@@ -62,44 +66,49 @@ assign
 
 
 expr
-:  expr 'Arr' '-' expr #modulusMinExpr
-| expr 'Arr' '+' expr #modulusPlusExpr
-|'-'expr   #unaryMinusExpr
-| Giorno ('='|'==') Number #giornoNumExpr
-| Giorno ('='|'==') Days #giornoDayExpr
-| Giorno ('<>') Number #giornoNumNExpr
-| Giorno ('<>') Days #giornoDayNExpr
-| Mese ('='|'==') Number #meseoNumExpr
-| Mese ('='|'==') Months #meseMonthsExpr
-| Mese ('<>') Number #meseNumNExpr
-| Mese ('<>') Months #meseMonthsNExpr
-| '!'expr   #notExpr
-| expr '^' expr #powerExpr
-| expr '*' expr #multiplyExpr
-| expr '/' expr #divideExpr
+: Excl expr                     #notExpr
+| Subtract expr                 #unaryMinusExpr
 
-| expr '+' expr #addExpr
-| expr '-' expr #subtractExpr
-| expr '>=' expr #gtEqExpr
-| expr '<=' expr #ltEqExpr
-| expr '>' expr #gtExpr
-| expr '<' expr #ltExpr
-| expr '<>' expr #nEqExpr
-| expr '==' expr #eqExpr
-| expr 'O' expr #orExpr
-| expr 'E' expr #andExpr
-| expr '=' expr #eqExpr
-| Number        #numberExpr
-| Bool          #boolExpr
-| Null          #nullExpr
-| functionCall   #functionCallExpr
-| Identifier    #identifierExpr
-| String        #stringExpr
-| '(' expr ')'  #exprExpr
+| expr 'Arr' '-' expr           #modulusMinExpr
+| expr 'Arr' '+' expr           #modulusPlusExpr
 
+| expr Pow expr                 #powerExpr
+| expr Multiply expr            #multiplyExpr
+| expr Divide expr              #divideExpr
 
+| expr Add expr                 #addExpr
+| expr Subtract expr            #subtractExpr
+
+| expr ('=='|'=') expr          #eqExpr
+| expr '<>' expr                #nEqExpr
+
+| expr GTEquals expr            #gtEqExpr
+| expr LTEquals expr            #ltEqExpr
+| expr GT expr                  #gtExpr
+| expr LT expr                  #ltExpr
+
+| Giorno ('='|'==') Number      #giornoNumExpr
+| Giorno ('='|'==') Days        #giornoDayExpr
+| Giorno ('<>') Number          #giornoNumNExpr
+| Giorno ('<>') Days            #giornoDayNExpr
+| Mese ('='|'==') Number        #meseoNumExpr
+| Mese ('='|'==') Months        #meseMonthsExpr
+| Mese ('<>') Number            #meseNumNExpr
+| Mese ('<>') Months            #meseMonthsNExpr
+
+| expr Or expr                  #orExpr
+| expr And expr                 #andExpr
+
+| Number                    #numberExpr
+| Bool                      #boolExpr
+| Null                      #nullExpr
+| functionCall              #functionCallExpr
+| Identifier                #identifierExpr
+| String                    #stringExpr
+| '(' expr ')'              #exprExpr
 ;
 
+Teoriche:'Teoriche';
 AggOr:'AggOr';
 ScaG2:'ScaG2';
 Effettive:'Effettive';
@@ -109,11 +118,13 @@ Mese:'Mese';
 ValPa:'ValPa';
 DurG1:'DurG1';
 DurG2:'DurG2';
+CodG1:'CodG1';
 DO:'Fai';
 END:';';
 Salta:'Salta';
 Println:'ScriviACapo';
 Print:'Scrivi';
+ScriviTutte:'ScriviTutte';
 If : 'Se';
 Else : 'Oppure';
 Null:'null';

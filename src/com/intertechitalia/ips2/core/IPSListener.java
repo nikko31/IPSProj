@@ -1,6 +1,6 @@
-// Generated from C:/Users/nikko31/Desktop/IPSProj/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
+// Generated from C:/Users/nikko31/Desktop/IPSProj1/src/com/intertechitalia/ips2/core\IPS.g4 by ANTLR 4.4.1-dev
 
-package com.intertechitalia.ips2.core;
+    package com.intertechitalia.ips2.core;
 
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -233,6 +233,18 @@ public interface IPSListener extends ParseTreeListener {
 	 */
 	void exitPrintlnFunctionCall(@NotNull IPSParser.PrintlnFunctionCallContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code meseNumNExpr}
+	 * labeled alternative in {@link IPSParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code meseNumNExpr}
+	 * labeled alternative in {@link IPSParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code durg2FunctionCall}
 	 * labeled alternative in {@link IPSParser#funcCall}.
 	 * @param ctx the parse tree
@@ -245,17 +257,17 @@ public interface IPSListener extends ParseTreeListener {
 	 */
 	void exitDurg2FunctionCall(@NotNull IPSParser.Durg2FunctionCallContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code meseNumNExpr}
-	 * labeled alternative in {@link IPSParser#expr}.
+	 * Enter a parse tree produced by the {@code codg1FunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
 	 * @param ctx the parse tree
 	 */
-	void enterMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx);
+	void enterCodg1FunctionCall(@NotNull IPSParser.Codg1FunctionCallContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code meseNumNExpr}
-	 * labeled alternative in {@link IPSParser#expr}.
+	 * Exit a parse tree produced by the {@code codg1FunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
 	 * @param ctx the parse tree
 	 */
-	void exitMeseNumNExpr(@NotNull IPSParser.MeseNumNExprContext ctx);
+	void exitCodg1FunctionCall(@NotNull IPSParser.Codg1FunctionCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ltExpr}
 	 * labeled alternative in {@link IPSParser#expr}.
@@ -431,6 +443,18 @@ public interface IPSListener extends ParseTreeListener {
 	 */
 	void exitNullExpr(@NotNull IPSParser.NullExprContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code scrivitutteValFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterScrivitutteValFunctionCall(@NotNull IPSParser.ScrivitutteValFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code scrivitutteValFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitScrivitutteValFunctionCall(@NotNull IPSParser.ScrivitutteValFunctionCallContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code boolExpr}
 	 * labeled alternative in {@link IPSParser#expr}.
 	 * @param ctx the parse tree
@@ -452,6 +476,18 @@ public interface IPSListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMegablock(@NotNull IPSParser.MegablockContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code scrivitutteFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterScrivitutteFunctionCall(@NotNull IPSParser.ScrivitutteFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code scrivitutteFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitScrivitutteFunctionCall(@NotNull IPSParser.ScrivitutteFunctionCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code effettiveFunctionCall}
 	 * labeled alternative in {@link IPSParser#funcCall}.
@@ -624,6 +660,18 @@ public interface IPSListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInterrompiFunctionCall(@NotNull IPSParser.InterrompiFunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code teoricheFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterTeoricheFunctionCall(@NotNull IPSParser.TeoricheFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code teoricheFunctionCall}
+	 * labeled alternative in {@link IPSParser#funcCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitTeoricheFunctionCall(@NotNull IPSParser.TeoricheFunctionCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code divideExpr}
 	 * labeled alternative in {@link IPSParser#expr}.
